@@ -9,11 +9,16 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThesisTrack | Centralized Management System</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/thesis_track/assets/logo.png">
     <link rel="stylesheet" href="/thesis_track/assets/style.css">
 </head>
 <body>
     <header>
-        <a href="/thesis_track/index.php" class="logo">ThesisTrack</a>
+        <a href="/thesis_track/index.php" class="logo-container">
+            <img src="/thesis_track/assets/logo.png" alt="ThesisTrack Logo" class="nav-logo">
+            <span class="logo-text">ThesisTrack</span>
+        </a>
         <nav>
             <ul>
                 <?php if (isset($_SESSION['user_id'])): ?>
@@ -25,7 +30,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <?php elseif ($_SESSION['role'] == 'admin'): ?>
                         <li><a href="/thesis_track/pages/admin_dashboard.php">Admin Panel</a></li>
                     <?php endif; ?>
-                    <li><a href="/thesis_track/logout.php" class="btn btn-action">Logout</a></li>
+                    <li><a href="/thesis_track/logout.php" class="btn btn-accent" style="color: white;">Logout</a></li>
                 <?php else: ?>
                     <li><a href="/thesis_track/index.php">Login</a></li>
                 <?php endif; ?>
@@ -34,7 +39,6 @@ if (session_status() === PHP_SESSION_NONE) {
     </header>
     <main>
         <?php
-        // Display Flash Messages
         if (isset($_SESSION['flash_message'])) {
             $type = $_SESSION['flash_type'] ?? 'success';
             echo "<div class='alert alert-$type'>{$_SESSION['flash_message']}</div>";
