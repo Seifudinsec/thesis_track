@@ -9,8 +9,12 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThesisTrack | Centralized Management System</title>
-    <!-- Favicon -->
+    
+    <!-- Robust Favicon Settings -->
     <link rel="icon" type="image/png" href="/thesis_track/assets/logo.png">
+    <link rel="shortcut icon" href="/thesis_track/assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="/thesis_track/assets/logo.png">
+    
     <link rel="stylesheet" href="/thesis_track/assets/style.css">
 </head>
 <body>
