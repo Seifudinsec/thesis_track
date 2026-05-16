@@ -8,10 +8,16 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
 }
 
 $student_id = $_SESSION['user_id'];
-$query = "SELECT s.*, f.comments, f.grade FROM submissions s LEFT JOIN feedback f ON s.id = f.submission_id WHERE s.student_id = ? ORDER BY s.submitted_at DESC";
+$query = "SELECT s.id, s.title, s.status, s.file_path, s.submitted_at, f.comments, f.grade 
+          FROM submissions s 
+          LEFT JOIN feedback f ON s.id = f.submission_id 
+          WHERE s.student_id = ? 
+          ORDER BY s.submitted_at DESC";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$student_id]);
 $submissions = $stmt->fetchAll();
+
+$approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'approved'));
 ?>
 
 <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
@@ -26,9 +32,7 @@ $submissions = $stmt->fetchAll();
     </div>
     <div class="stat-card" style="border-left-color: #10b981;">
         <h4>Approved</h4>
-        <div class="value"><?php 
-            echo count(array_filter($submissions, fn($s) => $s['status'] == 'approved')); 
-        ?></div>
+        <div class="value"><?php echo $approved_count; ?></div>
     </div>
 </div>
 
