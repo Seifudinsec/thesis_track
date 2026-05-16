@@ -1,11 +1,11 @@
     </main>
     <footer>
         <p>&copy; <?php echo date('Y'); ?> ThesisTrack - Award Winning Thesis Management System.</p>
-        <p>Student Developer Version | Focused on Academic Excellence</p>
+        <p>Developer: Seifudin Hassan  | Focused on Academic Excellence</p>
     </footer>
 
     <script>
-    // Auto-dismiss alerts after 4 seconds
+    // alerts lasts 4 seconds
     document.addEventListener('DOMContentLoaded', () => {
         const alerts = document.querySelectorAll('.alert');
         alerts.forEach(alert => {

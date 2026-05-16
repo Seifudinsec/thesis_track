@@ -2,7 +2,7 @@
 $host = 'localhost';
 $db   = 'thesis_track';
 $user = 'root';
-$pass = ''; // Default XAMPP password is empty
+$pass = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
