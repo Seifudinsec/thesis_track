@@ -79,11 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload'])) {
     </form>
 </div>
 
-<section class="student-explanation" style="margin-top: 3rem; background: #eee; padding: 1.5rem; border-radius: 8px;">
+<!-- <section class="student-explanation" style="margin-top: 3rem; background: #eee; padding: 1.5rem; border-radius: 8px;">
     <h3>🎓 Student Explanation: Secure File Upload</h3>
     <p><strong>Validation:</strong> We check for PHP upload errors, file extension (PDF only), and file size (5MB limit) before moving the file.</p>
     <p><strong>Sanitization:</strong> We use <code>preg_replace</code> to clean the filename of any special characters that might break the filesystem.</p>
     <p><strong>Permissions:</strong> The <code>uploads/</code> folder must have write permissions for the web server user (e.g., 777 or owned by <code>daemon</code>).</p>
-</section>
+</section> -->
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

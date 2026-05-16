@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_feedback"])) {
     </div>
 </div>
 
-<section class="student-explanation" style="margin-top: 3rem; background: #eee; padding: 1.5rem; border-radius: 8px;">
+<!-- <section class="student-explanation" style="margin-top: 3rem; background: #eee; padding: 1.5rem; border-radius: 8px;">
     <h3>🎓 Student Explanation: feedback.php</h3>
     <p><strong>Logic Flow:</strong> This page performs a <strong>Database Transaction</strong>. This means it updates the status in the <code>submissions</code> table AND inserts/updates the <code>feedback</code> table simultaneously. If one fails, both are cancelled to keep data consistent.</p>
     <p><strong>CRUD Operation:</strong> This is an <strong>Update (U)</strong> and <strong>Create (C)</strong> operation combined. We are updating the status of an existing record and creating/updating a feedback record.</p>
@@ -141,6 +141,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_feedback"])) {
             <li><strong>GET Validation:</strong> We check for <code>$_GET['id']</code> and verify it exists in the database. This prevents errors if someone tries to visit the page with a fake ID.</li>
         </ul>
     </p>
-</section>
+</section> -->
 
 <?php require_once "../includes/footer.php"; ?>
