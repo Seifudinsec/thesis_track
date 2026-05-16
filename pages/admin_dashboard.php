@@ -46,14 +46,14 @@ $users = $pdo->query("SELECT * FROM users ORDER BY role DESC")->fetchAll();
             <tbody>
                 <?php foreach ($users as $u): ?>
                     <tr>
-                        <td style="font-weight: 700;"><?php echo htmlspecialchars($u['full_name']); ?></td>
-                        <td><?php echo htmlspecialchars($u['email']); ?></td>
-                        <td>
+                        <td data-label="Full Name" style="font-weight: 700;"><?php echo htmlspecialchars($u['full_name']); ?></td>
+                        <td data-label="Email"><?php echo htmlspecialchars($u['email']); ?></td>
+                        <td data-label="Role">
                             <span style="font-weight: 800; color: <?php echo $u['role'] == 'admin' ? 'var(--accent)' : 'var(--primary)'; ?>; text-transform: uppercase; font-size: 0.75rem;">
                                 <?php echo $u['role']; ?>
                             </span>
                         </td>
-                        <td><?php echo date('M d, Y', strtotime($u['created_at'])); ?></td>
+                        <td data-label="Joined Date"><?php echo date('M d, Y', strtotime($u['created_at'])); ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
