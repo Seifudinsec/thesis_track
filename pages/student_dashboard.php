@@ -34,6 +34,10 @@ $approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'ap
         <h4>Approved</h4>
         <div class="value"><?php echo $approved_count; ?></div>
     </div>
+    <div class="stat-card" style="border-left-color: #e65a5a;">
+        <h4>Rejected</h4>
+        <div class="value"><?php echo count(array_filter($submissions, fn($s) => $s['status'] == 'rejected')); ?></div>
+    </div>
 </div>
 
 <div class="card">
