@@ -13,7 +13,7 @@ $p_count = $pdo->query("SELECT COUNT(*) FROM submissions WHERE status = 'pending
 $users = $pdo->query("SELECT * FROM users ORDER BY role DESC")->fetchAll();
 ?>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+<div class="dashboard-title-bar">
     <div>
         <h2>System Administration</h2>
         <p style="color: #64748b;">Monitoring system health and user oversight.</p>
@@ -61,7 +61,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY role DESC")->fetchAll();
                         </td>
                         <td data-label="Joined Date"><?php echo date('M d, Y', strtotime($u['created_at'])); ?></td>
                         <td data-label="Actions">
-                            <div style="display: flex; gap: 8px;">
+                            <div class="action-buttons">
                                 <a href="edit_user.php?id=<?php echo $u['id']; ?>" class="btn btn-outline" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">Edit</a>
                                 <?php if ($u['id'] != $_SESSION['user_id']): ?>
                                     <a href="delete_user.php?id=<?php echo $u['id']; ?>" class="btn btn-accent" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
