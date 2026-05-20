@@ -135,7 +135,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2.5rem; /* Increased base spacing */
+    margin-bottom: 2.5rem;
     gap: 1.5rem;
 }
 
@@ -386,20 +386,20 @@ tr:hover {
     }
 
     main {
-        padding: 1.5rem 5%;
+        padding: 2rem 5%;
     }
 
     .dashboard-title-bar {
         flex-direction: column;
         align-items: stretch;
         text-align: center;
-        margin-bottom: 3.5rem; /* Large gap below the whole title bar */
+        margin-bottom: 3.5rem;
     }
 
     .dashboard-title-bar .btn {
         width: 100%;
-        margin-top: 1.75rem; /* Significant gap above the button */
-        padding: 1.2rem;
+        margin-top: 2rem;
+        padding: 1.25rem;
     }
 
     .stats-grid {
@@ -422,10 +422,10 @@ tr:hover {
         width: 100%;
     }
     .table-container tr {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         border: 1px solid rgba(2, 6, 23, 0.06);
-        padding: 1rem;
-        border-radius: 8px;
+        padding: 1.25rem;
+        border-radius: 12px;
         background: var(--white);
     }
     .table-container td {
@@ -444,46 +444,64 @@ tr:hover {
 
     .action-buttons {
         justify-content: flex-start;
-        margin-top: 0.75rem;
-    }
-
-    .alert {
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
-        top: 10px;
-        width: calc(100% - 40px);
-        max-width: 420px;
+        margin-top: 1rem;
     }
 }
 
+/* EXTREME POLISH FOR 480PX AND BELOW */
 @media (max-width: 480px) {
+    header {
+        padding: 1.5rem 5%;
+    }
     main {
-        padding: 1rem 1rem;
+        padding: 2rem 1.25rem;
+    } /* More side padding for breathing room */
+
+    .dashboard-title-bar {
+        margin-bottom: 4rem; /* Even more space below the title/button section */
     }
+
+    .dashboard-title-bar h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .dashboard-title-bar p {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+
+    .dashboard-title-bar .btn {
+        margin-top: 2.5rem; /* Massive space above the button to isolate it */
+        margin-bottom: 1rem;
+        box-shadow: var(--shadow-lg);
+    }
+
     .card {
-        padding: 1.5rem 1.25rem;
+        padding: 1.75rem 1.25rem;
+        margin-bottom: 2.5rem; /* More space between cards */
     }
-    .form-container {
-        padding: 2.5rem 1.25rem;
+
+    .stats-grid {
+        gap: 2.5rem;
     }
-    .logo-text {
-        font-size: 1.25rem;
-    }
-    .nav-logo {
-        width: 40px;
-        height: 40px;
+
+    .stat-card {
+        margin-top: 1.5rem;
     }
     .stat-card .value {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+    }
+
+    .form-container {
+        padding: 2.5rem 1.5rem;
+        margin: 0 0.5rem;
+    }
+
+    .logo-text {
+        font-size: 1.3rem;
     }
     .btn {
-        padding: 1.1rem 1.4rem;
-    }
-    .dashboard-title-bar {
-        margin-left: 1.5rem;
-    }
-    .dashboard-title-bar .btn {
-        margin-top: 1.75rem;
+        padding: 1.2rem 1.5rem;
     }
 }
