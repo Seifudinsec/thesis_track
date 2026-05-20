@@ -17,12 +17,12 @@ $stmt->execute([$submission_id, $student_id]);
 $submission = $stmt->fetch();
 
 if ($submission && $submission['status'] === 'pending') {
-    // 1. Delete the physical file from the server
+    // 1. Delete file from the server
     if (file_exists("../" . $submission['file_path'])) {
         unlink("../" . $submission['file_path']);
     }
 
-    // 2. Delete the record from the database
+    // 2. Delete from the database
     $stmt = $pdo->prepare("DELETE FROM submissions WHERE id = ?");
     if ($stmt->execute([$submission_id])) {
         $_SESSION['flash_message'] = "Submission deleted successfully.";

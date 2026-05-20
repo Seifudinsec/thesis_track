@@ -18,7 +18,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY role DESC")->fetchAll();
         <h2>System Administration</h2>
         <p style="color: #64748b;">Monitoring system health and user oversight.</p>
     </div>
-    <a href="add_user.php" class="btn btn-primary">+ Add New User</a>
+    <a href="add_user.php" class="btn btn-primary" >+ Add New User</a>
 </div>
 
 <div class="stats-grid">
