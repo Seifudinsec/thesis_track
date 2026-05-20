@@ -13,8 +13,13 @@ $p_count = $pdo->query("SELECT COUNT(*) FROM submissions WHERE status = 'pending
 $users = $pdo->query("SELECT * FROM users ORDER BY role DESC")->fetchAll();
 ?>
 
-<h2>System Administration</h2>
-<p style="margin-bottom: 2rem; color: #64748b;">Monitoring system health and user oversight.</p>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <div>
+        <h2>System Administration</h2>
+        <p style="color: #64748b;">Monitoring system health and user oversight.</p>
+    </div>
+    <a href="add_user.php" class="btn btn-primary">+ Add New User</a>
+</div>
 
 <div class="stats-grid">
     <div class="stat-card" style="border-left-color: var(--primary);">
@@ -41,6 +46,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY role DESC")->fetchAll();
                     <th>Email</th>
                     <th>Role</th>
                     <th>Joined Date</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,6 +60,14 @@ $users = $pdo->query("SELECT * FROM users ORDER BY role DESC")->fetchAll();
                             </span>
                         </td>
                         <td data-label="Joined Date"><?php echo date('M d, Y', strtotime($u['created_at'])); ?></td>
+                        <td data-label="Actions">
+                            <div style="display: flex; gap: 8px;">
+                                <a href="edit_user.php?id=<?php echo $u['id']; ?>" class="btn btn-outline" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">Edit</a>
+                                <?php if ($u['id'] != $_SESSION['user_id']): ?>
+                                    <a href="delete_user.php?id=<?php echo $u['id']; ?>" class="btn btn-accent" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                <?php endif; ?>
+                            </div>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
