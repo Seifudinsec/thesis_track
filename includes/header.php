@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="shortcut icon" href="/thesis_track/assets/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="/thesis_track/assets/logo.png">
     
-    <link rel="stylesheet" href="/thesis_track/assets/style.css">
+    <link rel="stylesheet" href="/thesis_track/assets/style.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <header>
