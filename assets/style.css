@@ -25,7 +25,7 @@ ThesisTrack - Professional Style Guide
 
 html, body {
     width: 100%;
-    overflow-x: hidden; /* Prevent horizontal scroll at root level */
+    overflow-x: hidden;
 }
 
 body {
@@ -95,6 +95,24 @@ main { padding: 4rem 8%; min-height: calc(100vh - 200px); }
     width: 100%;
 }
 
+/* --- Status Badges (Polished) --- */
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badge-pending { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.badge-under_review { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+.badge-approved { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.badge-rejected { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
 /* --- Polished User Management Table --- */
 .table-container { 
     width: 100%; 
@@ -108,7 +126,7 @@ main { padding: 4rem 8%; min-height: calc(100vh - 200px); }
 table { 
     width: 100%; 
     border-collapse: collapse; 
-    min-width: 600px; /* Force minimum width for horizontal scroll if it were a standard table, but we stack it below */
+    min-width: 600px;
 }
 
 th { 
@@ -126,7 +144,7 @@ td {
     padding: 1.25rem 1.5rem; 
     border-bottom: 1px solid #f1f5f9; 
     vertical-align: middle;
-    word-break: break-word; /* Prevents long emails from breaking layout */
+    word-break: break-word;
     overflow-wrap: anywhere;
 }
 
@@ -198,6 +216,15 @@ footer {
 }
 footer p:first-child { color: var(--highlight); font-weight: 700; margin-bottom: 0.5rem; }
 
+/* Feedback Content */
+.feedback-content {
+    background: #f1f5f9;
+    padding: 1rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--highlight);
+    margin-top: 1rem;
+}
+
 /* --- Responsive Polish --- */
 @media (max-width: 1024px) {
     header { padding: 1rem 5%; }
@@ -217,7 +244,6 @@ footer p:first-child { color: var(--highlight); font-weight: 700; margin-bottom:
 
     .card { padding: 2rem 1.5rem; }
 
-    /* Polished Table Stacking for NO Horizontal Scroll */
     .table-container { box-shadow: none; overflow-x: hidden; }
     table { min-width: 100%; }
     table thead { display: none; }
@@ -255,14 +281,12 @@ footer p:first-child { color: var(--highlight); font-weight: 700; margin-bottom:
     }
 
     .action-buttons { justify-content: flex-end; width: 100%; }
-    .action-buttons .btn { padding: 0.5rem 0.75rem; font-size: 0.75rem; }
 }
 
 @media (max-width: 480px) {
     main { padding: 2rem 1rem; }
     .card { padding: 1.5rem 1rem; }
     .stat-card { padding: 1.5rem; }
-    .stat-card .value { font-size: 2rem; }
     
     td { flex-direction: column; align-items: flex-start; text-align: left; }
     td::before { margin-bottom: 0.25rem; }
