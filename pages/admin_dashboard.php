@@ -77,7 +77,7 @@ $rejected_count = $status_counts['rejected'] ?? 0;
     </div>
 </div>
 
-<div class="card">
+<div class="card" id="recent-submissions">
     <h3 style="margin-bottom: 1.5rem;">Recent Submissions</h3>
     <div class="table-container">
         <table>

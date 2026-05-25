@@ -10,6 +10,9 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'supervisor') {
 $stmt = $pdo->query("SELECT s.*, u.full_name FROM submissions s JOIN users u ON s.student_id = u.id ORDER BY s.submitted_at DESC");
 $submissions = $stmt->fetchAll();
 $students = $pdo->query("SELECT * FROM users WHERE role = 'student' ORDER BY full_name ASC")->fetchAll();
+
+// Fetch upcoming deadlines
+$deadlines = $pdo->query("SELECT * FROM deadlines WHERE deadline_date >= NOW() ORDER BY deadline_date ASC LIMIT 3")->fetchAll();
 ?>
 
 <div class="dashboard-title-bar">
@@ -37,6 +40,29 @@ $students = $pdo->query("SELECT * FROM users WHERE role = 'student' ORDER BY ful
         <div class="value"><?php echo count($students); ?></div>
     </div>
 </div>
+
+<?php if (!empty($deadlines)): ?>
+<div class="card" id="deadlines" style="margin-bottom: 2rem; border-left: 4px solid #f59e0b;">
+    <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px;">
+        <i data-lucide="bell" style="color: #f59e0b;"></i>
+        Upcoming Deadlines & Milestones
+    </h3>
+    <div class="metric-list">
+        <?php foreach ($deadlines as $d): ?>
+            <div style="padding: 1rem; background: #fff; border-radius: 8px; margin-bottom: 0.5rem; box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong style="display: block; font-size: 1.1rem; color: var(--primary);"><?php echo htmlspecialchars($d['title']); ?></strong>
+                    <small style="color: var(--text-muted);"><?php echo htmlspecialchars($d['description']); ?></small>
+                </div>
+                <div style="text-align: right;">
+                    <span style="display: block; font-weight: 700; color: #e65a5a;"><?php echo date('M d, Y', strtotime($d['deadline_date'])); ?></span>
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">Due at <?php echo date('H:i', strtotime($d['deadline_date'])); ?></small>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php endif; ?>
 
 <div class="card" id="review-queue">
     <h3 style="margin-bottom: 1.5rem;">Recent Submissions</h3>

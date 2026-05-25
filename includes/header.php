@@ -23,7 +23,10 @@ if ($role == 'student') {
 
 if (!function_exists('nav_class')) {
     function nav_class($current_page, $pages) {
-        return in_array($current_page, (array) $pages, true) ? 'active' : '';
+        if (is_array($pages)) {
+            return in_array($current_page, $pages, true) ? 'active' : '';
+        }
+        return $current_page === $pages ? 'active' : '';
     }
 }
 ?>
@@ -78,14 +81,21 @@ if (!function_exists('nav_class')) {
                         </div>
                     <?php elseif ($role == 'supervisor'): ?>
                         <div class="nav-section">
-                            <p class="nav-section-title">Review</p>
+                            <p class="nav-section-title">Workspace</p>
                             <a class="nav-item <?php echo nav_class($current_page, 'supervisor_dashboard.php'); ?>" href="<?php echo $base_path; ?>pages/supervisor_dashboard.php">
                                 <i data-lucide="layout-dashboard" class="nav-icon" aria-hidden="true"></i>
                                 <span>Dashboard</span>
                             </a>
-                            <a class="nav-item <?php echo nav_class($current_page, 'feedback.php'); ?>" href="<?php echo $base_path; ?>pages/supervisor_dashboard.php#review-queue">
+                            <a class="nav-item <?php echo nav_class($current_page, ['review_queue.php', 'feedback.php']); ?>" href="<?php echo $base_path; ?>pages/review_queue.php">
                                 <i data-lucide="clipboard-check" class="nav-icon" aria-hidden="true"></i>
                                 <span>Review Queue</span>
+                            </a>
+                        </div>
+                        <div class="nav-section">
+                            <p class="nav-section-title">Deadlines</p>
+                            <a class="nav-item <?php echo nav_class($current_page, 'supervisor_dashboard.php'); ?>" href="<?php echo $base_path; ?>pages/supervisor_dashboard.php#deadlines">
+                                <i data-lucide="calendar-clock" class="nav-icon" aria-hidden="true"></i>
+                                <span>View Deadlines</span>
                             </a>
                         </div>
                         <div class="nav-section">
@@ -105,6 +115,10 @@ if (!function_exists('nav_class')) {
                             <a class="nav-item <?php echo nav_class($current_page, 'admin_dashboard.php'); ?>" href="<?php echo $base_path; ?>pages/admin_dashboard.php">
                                 <i data-lucide="layout-dashboard" class="nav-icon" aria-hidden="true"></i>
                                 <span>Dashboard</span>
+                            </a>
+                            <a class="nav-item <?php echo nav_class($current_page, ['review_queue.php', 'feedback.php']); ?>" href="<?php echo $base_path; ?>pages/review_queue.php">
+                                <i data-lucide="clipboard-check" class="nav-icon" aria-hidden="true"></i>
+                                <span>Review Queue</span>
                             </a>
                             <a class="nav-item <?php echo nav_class($current_page, ['manage_deadlines.php', 'add_deadline.php']); ?>" href="<?php echo $base_path; ?>pages/manage_deadlines.php">
                                 <i data-lucide="calendar-days" class="nav-icon" aria-hidden="true"></i>
