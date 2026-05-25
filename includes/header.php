@@ -39,7 +39,17 @@ if (!function_exists('nav_class')) {
 <body class="<?php echo $is_logged_in ? 'app-layout' : 'auth-layout'; ?>">
     <?php if ($is_logged_in): ?>
         <div class="app-shell">
-            <aside class="sidebar">
+            <div class="mobile-topbar">
+                <button type="button" class="sidebar-toggle" aria-label="Open navigation menu" aria-controls="app-sidebar" aria-expanded="false">
+                    <i data-lucide="menu" aria-hidden="true"></i>
+                </button>
+                <a href="<?php echo $dashboard_path; ?>" class="mobile-brand">
+                    <img src="/thesis_track/assets/logo.png" alt="ThesisTrack Logo">
+                    <span>ThesisTrack</span>
+                </a>
+            </div>
+            <button type="button" class="sidebar-overlay" aria-label="Close navigation menu"></button>
+            <aside class="sidebar" id="app-sidebar">
                 <a href="<?php echo $dashboard_path; ?>" class="sidebar-brand">
                     <img src="/thesis_track/assets/logo.png" alt="ThesisTrack Logo" class="nav-logo">
                     <span>ThesisTrack</span>
