@@ -6,6 +6,16 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (isset($_SESSION['user_id']) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
+    if ($_SESSION['role'] == 'student') {
+        header("Location: pages/student_dashboard.php");
+    } elseif ($_SESSION['role'] == 'supervisor') {
+        header("Location: pages/supervisor_dashboard.php");
+    } elseif ($_SESSION['role'] == 'admin') {
+        header("Location: pages/admin_dashboard.php");
+    }
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     $email = $_POST['email'];

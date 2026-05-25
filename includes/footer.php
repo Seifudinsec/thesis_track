@@ -1,5 +1,8 @@
-    </main>
-    <footer>
+        </main>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        </div>
+    <?php endif; ?>
+    <footer class="<?php echo isset($_SESSION['user_id']) ? 'app-footer' : 'auth-footer'; ?>">
         <p>&copy; <?php echo date('Y'); ?> ThesisTrack - Award Winning Thesis Management System.</p>
         <p>Developer: Seifudin Hassan  | Focused on Academic Excellence</p>
     </footer>

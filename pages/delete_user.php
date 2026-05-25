@@ -5,15 +5,17 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'supervisor'], true)) {
     header("Location: ../index.php");
     exit();
 }
 
+$is_admin = $_SESSION['role'] === 'admin';
+$dashboard_url = $is_admin ? 'admin_dashboard.php' : 'supervisor_dashboard.php';
 $user_id = $_GET['id'] ?? null;
 
 if (!$user_id) {
-    header("Location: admin_dashboard.php");
+    header("Location: $dashboard_url");
     exit();
 }
 
@@ -21,11 +23,24 @@ if (!$user_id) {
 if ($user_id == $_SESSION['user_id']) {
     $_SESSION['flash_message'] = "Error: You cannot delete your own account.";
     $_SESSION['flash_type'] = "error";
-    header("Location: admin_dashboard.php");
+    header("Location: $dashboard_url");
     exit();
 }
 
 try {
+    if (!$is_admin) {
+        $stmt = $pdo->prepare("SELECT role FROM users WHERE id = ?");
+        $stmt->execute([$user_id]);
+        $target_role = $stmt->fetchColumn();
+
+        if ($target_role !== 'student') {
+            $_SESSION['flash_message'] = "Error: Supervisors can only delete student accounts.";
+            $_SESSION['flash_type'] = "error";
+            header("Location: $dashboard_url");
+            exit();
+        }
+    }
+
     // Check for dependencies
     // 1. Submissions (for students)
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM submissions WHERE student_id = ?");
@@ -33,7 +48,7 @@ try {
     if ($stmt->fetchColumn() > 0) {
         $_SESSION['flash_message'] = "Error: Cannot delete user. They have active thesis submissions.";
         $_SESSION['flash_type'] = "error";
-        header("Location: admin_dashboard.php");
+        header("Location: $dashboard_url");
         exit();
     }
 
@@ -43,7 +58,7 @@ try {
     if ($stmt->fetchColumn() > 0) {
         $_SESSION['flash_message'] = "Error: Cannot delete user. They have provided feedback on submissions.";
         $_SESSION['flash_type'] = "error";
-        header("Location: admin_dashboard.php");
+        header("Location: $dashboard_url");
         exit();
     }
 
@@ -61,5 +76,5 @@ try {
     $_SESSION['flash_type'] = "error";
 }
 
-header("Location: admin_dashboard.php");
+header("Location: $dashboard_url");
 exit();

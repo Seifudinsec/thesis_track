@@ -19,6 +19,7 @@ ThesisTrack - Professional Style Guide
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
     --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.06);
+    --sidebar-width: 280px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,6 +27,7 @@ ThesisTrack - Professional Style Guide
 html, body {
     width: 100%;
     overflow-x: hidden;
+    min-height: 100%;
 }
 
 body {
@@ -35,35 +37,196 @@ body {
     line-height: 1.6;
 }
 
-/* --- Professional Navigation --- */
-header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    padding: 1.25rem 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: var(--shadow-md);
+body.app-layout {
+    height: 100vh;
+    overflow: hidden;
 }
 
-.logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.nav-logo { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--highlight); background: white; object-fit: cover; }
-.logo-text { color: var(--highlight); font-size: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
+body.auth-layout {
+    min-height: 100vh;
+    overflow-y: auto;
+}
 
-nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
-nav ul li a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
-nav ul li a:not(.btn):hover { color: var(--highlight); }
+/* --- App Shell Navigation --- */
+.app-shell {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    background: #eef2f7;
+    overflow: hidden;
+}
 
-main { padding: 4rem 8%; min-height: calc(100vh - 200px); }
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, var(--primary-dark) 0%, #1b2448 100%);
+    border-right: 1px solid rgba(255,255,255,0.12);
+    color: var(--white);
+    padding: 1.25rem;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--highlight);
+    font-size: 1rem;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin-bottom: 2rem;
+}
+
+.nav-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 2px solid var(--highlight);
+    background: white;
+    object-fit: cover;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.nav-section {
+    border-left: 1px solid rgba(168,208,230,0.35);
+    padding-left: 0.75rem;
+}
+
+.nav-section-title {
+    color: var(--secondary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin-bottom: 0.5rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #e6edf7;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.65rem 0.75rem;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background: rgba(168,208,230,0.18);
+    color: var(--highlight);
+}
+
+.nav-item:hover { transform: translateX(2px); }
+
+.nav-icon {
+    width: 1.55rem;
+    height: 1.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 7px;
+    background: rgba(255,255,255,0.1);
+    color: var(--secondary);
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+.sidebar-user {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.14);
+    padding-top: 1rem;
+}
+
+.user-avatar {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--secondary);
+    color: var(--primary-dark);
+    font-weight: 900;
+}
+
+.sidebar-user strong,
+.sidebar-user span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar-user strong { font-size: 0.85rem; }
+.sidebar-user span { color: var(--secondary); font-size: 0.75rem; }
+
+.logout-link {
+    grid-column: 1 / -1;
+    color: var(--accent-soft);
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.app-main {
+    height: 100vh;
+    min-width: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2rem;
+}
+
+.auth-main {
+    padding: 4rem 8%;
+    min-height: calc(100vh - 140px);
+}
+
+.alert {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
 
 /* --- Dashboard Components --- */
 .dashboard-title-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
     gap: 1.5rem;
 }
 
@@ -71,14 +234,14 @@ main { padding: 4rem 8%; min-height: calc(100vh - 200px); }
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .stat-card {
     background: var(--white);
-    padding: 2.5rem;
-    border-radius: 20px;
-    border-top: 6px solid var(--primary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 6px solid var(--primary);
     box-shadow: var(--shadow-md);
     transition: transform 0.3s;
 }
@@ -88,12 +251,14 @@ main { padding: 4rem 8%; min-height: calc(100vh - 200px); }
 
 .card {
     background: var(--white);
-    border-radius: 20px;
-    padding: 3rem;
+    border-radius: 8px;
+    padding: 2rem;
     box-shadow: var(--shadow-md);
     margin-bottom: 2rem;
     width: 100%;
 }
+
+.card[id] { scroll-margin-top: 1rem; }
 
 /* --- Status Badges (Polished) --- */
 .badge {
@@ -114,11 +279,11 @@ main { padding: 4rem 8%; min-height: calc(100vh - 200px); }
 .badge-rejected { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
 
 /* --- Polished User Management Table --- */
-.table-container { 
-    width: 100%; 
-    overflow-x: auto; 
-    border-radius: 12px; 
-    background: var(--white); 
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    background: var(--white);
     box-shadow: var(--shadow-sm);
     -webkit-overflow-scrolling: touch;
 }
@@ -160,7 +325,7 @@ td {
     align-items: center;
     justify-content: center;
     padding: 0.8rem 1.5rem;
-    border-radius: 12px;
+    border-radius: 8px;
     font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
@@ -190,7 +355,7 @@ td {
     margin: 2rem auto;
     background: var(--white);
     padding: 3.5rem;
-    border-radius: 24px;
+    border-radius: 8px;
     box-shadow: var(--shadow-lg);
     text-align: center;
 }
@@ -201,19 +366,25 @@ td {
     width: 100%;
     padding: 0.9rem 1.25rem;
     border: 2px solid #e2e8f0;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s;
 }
 
 /* --- Modern Footer --- */
-footer {
+.auth-footer,
+.app-footer {
     background: var(--primary-dark);
     padding: 4rem 8% 2.5rem;
     color: var(--white);
     text-align: center;
     border-top: 6px solid var(--accent);
 }
+
+.app-footer {
+    display: none;
+}
+
 footer p:first-child { color: var(--highlight); font-weight: 700; margin-bottom: 0.5rem; }
 
 /* Feedback Content */
@@ -227,32 +398,63 @@ footer p:first-child { color: var(--highlight); font-weight: 700; margin-bottom:
 
 /* --- Responsive Polish --- */
 @media (max-width: 1024px) {
-    header { padding: 1rem 5%; }
-    main { padding: 3rem 4%; }
+    .app-shell {
+        grid-template-columns: 230px minmax(0, 1fr);
+    }
+
+    :root { --sidebar-width: 230px; }
+
+    .app-main { padding: 1.5rem; }
+    .auth-main { padding: 3rem 4%; }
 }
 
 @media (max-width: 768px) {
-    header { flex-direction: column; text-align: center; padding: 2rem 5%; gap: 1.5rem; }
-    nav ul { flex-direction: column; width: 100%; gap: 1rem; }
+    .app-shell {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+    }
+
+    :root { --sidebar-width: 190px; }
+
+    .sidebar { padding: 1rem; }
+
+    .sidebar-brand span { font-size: 0.85rem; }
+
+    .nav-item { padding: 0.6rem 0.5rem; }
+
+    .app-main {
+        padding: 1.25rem;
+    }
+
+    .app-footer {
+        margin-left: 0;
+    }
     
     .dashboard-title-bar {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
     }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 1rem;
+    }
+
     .dashboard-title-bar .btn { width: 100%; }
 
-    .card { padding: 2rem 1.5rem; }
+    .card { padding: 1.5rem; }
 
     .table-container { box-shadow: none; overflow-x: hidden; }
     table { min-width: 100%; }
     table thead { display: none; }
     table, tbody, tr, td { display: block; width: 100%; }
     
-    tr { 
-        margin-bottom: 2rem; 
-        border: 1px solid #edf2f7; 
-        border-radius: 16px; 
+    tr {
+        margin-bottom: 2rem;
+        border: 1px solid #edf2f7;
+        border-radius: 8px;
         padding: 1rem;
         background: #fdfdfd;
         box-shadow: var(--shadow-sm);
@@ -284,7 +486,40 @@ footer p:first-child { color: var(--highlight); font-weight: 700; margin-bottom:
 }
 
 @media (max-width: 480px) {
-    main { padding: 2rem 1rem; }
+    .app-shell {
+        grid-template-columns: 150px minmax(0, 1fr);
+    }
+
+    :root { --sidebar-width: 150px; }
+
+    .sidebar {
+        padding: 0.75rem;
+    }
+
+    .sidebar-brand {
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .nav-logo {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nav-section {
+        padding-left: 0.5rem;
+    }
+
+    .nav-icon {
+        display: none;
+    }
+
+    .nav-item {
+        font-size: 0.8rem;
+    }
+
+    .app-main,
+    .auth-main { padding: 2rem 1rem; }
     .card { padding: 1.5rem 1rem; }
     .stat-card { padding: 1.5rem; }
     

@@ -6,7 +6,7 @@ ThesisTrack is a professional web application designed to streamline the submiss
 
 - Role-Based Access Control: Dedicated dashboards for Students, Supervisors, and Admins.
 - Student Portal: Upload thesis in PDF format, track submission status, and view supervisor feedback/grades.
-- Supervisor Portal: Review student submissions, download PDFs, and provide structured feedback with grades.
+- Supervisor Portal: Review student submissions, download PDFs, provide structured feedback with grades, and perform CRUD operations for student accounts.
 - Admin Panel: Full User CRUD to manage system access.
 - Responsive Design: Fully optimized for mobile, tablet, and desktop viewing.
 - Security: Secure password hashing, SQL Injection protection, and atomic transactions.
@@ -23,4 +23,3 @@ ThesisTrack is a professional web application designed to streamline the submiss
 2. Create a database named thesis_track.
 3. Update config/db.php with your database credentials.
 4. Ensure the uploads/ directory is writable.
-

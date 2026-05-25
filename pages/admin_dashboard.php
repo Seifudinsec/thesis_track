@@ -36,7 +36,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY role DESC")->fetchAll();
     </div>
 </div>
 
-<div class="card">
+<div class="card" id="user-management">
     <h3 style="margin-bottom: 1.5rem;">User Management</h3>
     <div class="table-container">
         <table>
