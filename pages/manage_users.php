@@ -25,9 +25,9 @@ $users = $stmt->fetchAll();
 <div class="dashboard-title-bar">
     <div>
         <h2><?php echo $page_title; ?></h2>
-        <p style="color: #64748b;"><?php echo $page_description; ?></p>
+        <p style="color: var(--text-muted);"><?php echo $page_description; ?></p>
     </div>
-    <a href="add_user.php" class="btn btn-primary"><?php echo $is_admin ? '+ Add User' : '+ Add Student'; ?></a>
+    <a href="add_user.php" class="btn btn-primary"><i data-lucide="user-plus" class="btn-icon" aria-hidden="true"></i><?php echo $is_admin ? 'Add User' : 'Add Student'; ?></a>
 </div>
 
 <div class="card">
@@ -60,9 +60,9 @@ $users = $stmt->fetchAll();
                         <td data-label="Joined Date"><?php echo date('M d, Y', strtotime($user['created_at'])); ?></td>
                         <td data-label="Actions">
                             <div class="action-buttons">
-                                <a href="edit_user.php?id=<?php echo $user['id']; ?>" class="btn btn-outline" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">Edit</a>
+                                <a href="edit_user.php?id=<?php echo $user['id']; ?>" class="btn btn-outline" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;"><i data-lucide="pencil" class="btn-icon" aria-hidden="true"></i>Edit</a>
                                 <?php if ($user['id'] != $_SESSION['user_id']): ?>
-                                    <a href="delete_user.php?id=<?php echo $user['id']; ?>" class="btn btn-accent" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                    <a href="delete_user.php?id=<?php echo $user['id']; ?>" class="btn btn-accent" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;" onclick="return confirm('Are you sure you want to delete this user?')"><i data-lucide="trash-2" class="btn-icon" aria-hidden="true"></i>Delete</a>
                                 <?php endif; ?>
                             </div>
                         </td>
@@ -70,7 +70,7 @@ $users = $stmt->fetchAll();
                 <?php endforeach; ?>
                 <?php if (empty($users)): ?>
                     <tr>
-                        <td colspan="<?php echo $is_admin ? '5' : '4'; ?>" style="text-align:center; padding: 3rem; color: #64748b;">
+                        <td colspan="<?php echo $is_admin ? '5' : '4'; ?>" style="text-align:center; padding: 3rem; color: var(--text-muted);">
                             <?php echo $is_admin ? 'No users found.' : 'No student accounts found.'; ?>
                         </td>
                     </tr>

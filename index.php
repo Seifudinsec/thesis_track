@@ -51,23 +51,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 require_once 'includes/header.php';
 ?>
 
-<div class="form-container">
-    <h2>Secure Login</h2>
-    <p>Access your ThesisTrack account</p>
-    
-    <form action="index.php" method="POST">
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" name="email" id="email" class="form-control" required placeholder="name@university.edu">
+<div class="login-shell">
+    <section class="login-panel">
+        <a href="index.php" class="login-brand">
+            <img src="assets/logo.png" alt="ThesisTrack Logo">
+            <span>ThesisTrack</span>
+        </a>
+
+        <div class="login-copy">
+            <h1>Welcome back!</h1>
+            <p>Access thesis submissions, reviews, feedback, and academic progress from one secure workspace.</p>
         </div>
-        
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="form-control" required placeholder="••••••••">
+
+        <form action="index.php" method="POST" class="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" required placeholder="name@university.edu">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" required placeholder="Enter your password">
+            </div>
+
+            <button type="submit" name="login" class="btn btn-primary login-submit"><i data-lucide="log-in" class="btn-icon" aria-hidden="true"></i>Sign in</button>
+        </form>
+    </section>
+
+    <aside class="login-showcase" aria-label="ThesisTrack workspace summary">
+        <div class="showcase-card">
+            <div class="showcase-tags">
+                <span>Students</span>
+                <span>Supervisors</span>
+                <span>Admins</span>
+            </div>
+            <blockquote>
+                ThesisTrack keeps thesis submission, review, grading, and user management in one role-based academic system.
+            </blockquote>
+            <p>Centralized Management System</p>
         </div>
-        
-        <button type="submit" name="login" class="btn btn-primary" style="width: 100%;">Sign In</button>
-    </form>
-  
+    </aside>
 </div>
 <?php require_once 'includes/footer.php'; ?>

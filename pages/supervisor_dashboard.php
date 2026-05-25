@@ -15,11 +15,11 @@ $students = $pdo->query("SELECT * FROM users WHERE role = 'student' ORDER BY ful
 <div class="dashboard-title-bar">
     <div>
         <h2>Supervisor Control Panel</h2>
-        <p style="color: #64748b;">Reviewing student work and managing student accounts.</p>
+        <p style="color: var(--text-muted);">Reviewing student work and managing student accounts.</p>
     </div>
     <div class="action-buttons">
-        <a href="add_user.php" class="btn btn-primary">+ Add Student</a>
-        <a href="manage_users.php" class="btn btn-outline">Manage Students</a>
+        <a href="add_user.php" class="btn btn-primary"><i data-lucide="user-plus" class="btn-icon" aria-hidden="true"></i>Add Student</a>
+        <a href="manage_users.php" class="btn btn-outline"><i data-lucide="users" class="btn-icon" aria-hidden="true"></i>Manage Students</a>
     </div>
 </div>
 
@@ -61,12 +61,12 @@ $students = $pdo->query("SELECT * FROM users WHERE role = 'student' ORDER BY ful
                             </span>
                         </td>
                         <td data-label="Action">
-                            <a href="feedback.php?id=<?php echo $sub['id']; ?>" class="btn btn-primary" style="padding: 0.5rem 1rem;">Review Thesis</a>
+                            <a href="feedback.php?id=<?php echo $sub['id']; ?>" class="btn btn-primary" style="padding: 0.5rem 1rem;"><i data-lucide="clipboard-check" class="btn-icon" aria-hidden="true"></i>Review Thesis</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
                 <?php if (empty($submissions)): ?>
-                    <tr><td colspan="4" style="text-align:center; padding: 3rem; color: #64748b;">No submissions found.</td></tr>
+                    <tr><td colspan="4" style="text-align:center; padding: 3rem; color: var(--text-muted);">No submissions found.</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>

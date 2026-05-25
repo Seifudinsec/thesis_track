@@ -74,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload'])) {
             <label for="thesis_file">Select PDF (Max 5MB)</label>
             <input type="file" name="thesis_file" id="thesis_file" class="form-control" required accept=".pdf">
         </div>
-        <button type="submit" name="upload" class="btn btn-primary" style="width: 100%;">Submit Thesis</button>
-        <a href="student_dashboard.php" style="display: block; text-align: center; margin-top: 1rem; color: #666; text-decoration: none;">Back to Dashboard</a>
+        <button type="submit" name="upload" class="btn btn-primary" style="width: 100%;"><i data-lucide="upload-cloud" class="btn-icon" aria-hidden="true"></i>Submit Thesis</button>
+        <a href="student_dashboard.php" style="display: block; text-align: center; margin-top: 1rem; color: var(--text-muted); text-decoration: none;">Back to Dashboard</a>
     </form>
 </div>
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

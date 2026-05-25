@@ -50,14 +50,14 @@ if (!function_exists('nav_class')) {
                         <div class="nav-section">
                             <p class="nav-section-title">Workspace</p>
                             <a class="nav-item <?php echo nav_class($current_page, 'student_dashboard.php'); ?>" href="/thesis_track/pages/student_dashboard.php">
-                                <span class="nav-icon">D</span>
+                                <i data-lucide="layout-dashboard" class="nav-icon" aria-hidden="true"></i>
                                 <span>Dashboard</span>
                             </a>
                         </div>
                         <div class="nav-section">
                             <p class="nav-section-title">Submissions</p>
                             <a class="nav-item <?php echo nav_class($current_page, ['upload.php', 'edit_submission.php']); ?>" href="/thesis_track/pages/upload.php">
-                                <span class="nav-icon">U</span>
+                                <i data-lucide="upload-cloud" class="nav-icon" aria-hidden="true"></i>
                                 <span>Upload Thesis</span>
                             </a>
                         </div>
@@ -65,22 +65,22 @@ if (!function_exists('nav_class')) {
                         <div class="nav-section">
                             <p class="nav-section-title">Review</p>
                             <a class="nav-item <?php echo nav_class($current_page, 'supervisor_dashboard.php'); ?>" href="/thesis_track/pages/supervisor_dashboard.php">
-                                <span class="nav-icon">D</span>
+                                <i data-lucide="layout-dashboard" class="nav-icon" aria-hidden="true"></i>
                                 <span>Dashboard</span>
                             </a>
                             <a class="nav-item <?php echo nav_class($current_page, 'feedback.php'); ?>" href="/thesis_track/pages/supervisor_dashboard.php#review-queue">
-                                <span class="nav-icon">R</span>
+                                <i data-lucide="clipboard-check" class="nav-icon" aria-hidden="true"></i>
                                 <span>Review Queue</span>
                             </a>
                         </div>
                         <div class="nav-section">
                             <p class="nav-section-title">Students</p>
                             <a class="nav-item <?php echo nav_class($current_page, ['add_user.php']); ?>" href="/thesis_track/pages/add_user.php">
-                                <span class="nav-icon">A</span>
+                                <i data-lucide="user-plus" class="nav-icon" aria-hidden="true"></i>
                                 <span>Add Student</span>
                             </a>
                             <a class="nav-item <?php echo nav_class($current_page, ['manage_users.php', 'edit_user.php', 'delete_user.php']); ?>" href="/thesis_track/pages/manage_users.php">
-                                <span class="nav-icon">M</span>
+                                <i data-lucide="users" class="nav-icon" aria-hidden="true"></i>
                                 <span>Manage Students</span>
                             </a>
                         </div>
@@ -88,15 +88,15 @@ if (!function_exists('nav_class')) {
                         <div class="nav-section">
                             <p class="nav-section-title">Administration</p>
                             <a class="nav-item <?php echo nav_class($current_page, 'admin_dashboard.php'); ?>" href="/thesis_track/pages/admin_dashboard.php">
-                                <span class="nav-icon">D</span>
+                                <i data-lucide="layout-dashboard" class="nav-icon" aria-hidden="true"></i>
                                 <span>Dashboard</span>
                             </a>
                             <a class="nav-item <?php echo nav_class($current_page, 'add_user.php'); ?>" href="/thesis_track/pages/add_user.php">
-                                <span class="nav-icon">A</span>
+                                <i data-lucide="user-plus" class="nav-icon" aria-hidden="true"></i>
                                 <span>Add User</span>
                             </a>
                             <a class="nav-item <?php echo nav_class($current_page, ['manage_users.php', 'edit_user.php', 'delete_user.php']); ?>" href="/thesis_track/pages/manage_users.php">
-                                <span class="nav-icon">M</span>
+                                <i data-lucide="users" class="nav-icon" aria-hidden="true"></i>
                                 <span>Manage Users</span>
                             </a>
                         </div>
@@ -109,7 +109,7 @@ if (!function_exists('nav_class')) {
                         <strong><?php echo htmlspecialchars($_SESSION['full_name']); ?></strong>
                         <span><?php echo ucfirst(htmlspecialchars($role)); ?></span>
                     </div>
-                    <a href="/thesis_track/logout.php" class="logout-link">Logout</a>
+                    <a href="/thesis_track/logout.php" class="logout-link"><i data-lucide="log-out" class="logout-icon" aria-hidden="true"></i>Logout</a>
                 </div>
             </aside>
 
@@ -120,7 +120,7 @@ if (!function_exists('nav_class')) {
         <?php
         if (isset($_SESSION['flash_message'])) {
             $type = $_SESSION['flash_type'] ?? 'success';
-            echo "<div class='alert alert-$type'>" . htmlspecialchars($_SESSION['flash_message']) . "</div>";
+            echo "<div class='toast-container'><div class='alert alert-$type'>" . htmlspecialchars($_SESSION['flash_message']) . "</div></div>";
             unset($_SESSION['flash_message']);
             unset($_SESSION['flash_type']);
         }

@@ -98,8 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_user'])) {
                 <?php endif; ?>
             </select>
         </div>
-        <button type="submit" name="edit_user" class="btn btn-primary" style="width: 100%;">Update User</button>
-        <a href="<?php echo $dashboard_url; ?>" style="display: block; text-align: center; margin-top: 1rem; color: #666; text-decoration: none;">Back to Management</a>
+        <button type="submit" name="edit_user" class="btn btn-primary" style="width: 100%;"><i data-lucide="save" class="btn-icon" aria-hidden="true"></i>Update User</button>
+        <a href="<?php echo $dashboard_url; ?>" style="display: block; text-align: center; margin-top: 1rem; color: var(--text-muted); text-decoration: none;">Back to Management</a>
     </form>
 </div>
 

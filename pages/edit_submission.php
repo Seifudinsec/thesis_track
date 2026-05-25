@@ -86,11 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
         <div class="form-group">
             <label for="thesis_file">Replace PDF File (Optional)</label>
             <input type="file" name="thesis_file" id="thesis_file" class="form-control" accept=".pdf">
-            <small style="color: #666;">Leave blank to keep the current file.</small>
+            <small style="color: var(--text-muted);">Leave blank to keep the current file.</small>
         </div>
 
-        <button type="submit" name="update" class="btn btn-primary" style="width: 100%;">Save Changes</button>
-        <a href="student_dashboard.php" style="display: block; text-align: center; margin-top: 1rem; color: #666; text-decoration: none;">Cancel</a>
+        <button type="submit" name="update" class="btn btn-primary" style="width: 100%;"><i data-lucide="save" class="btn-icon" aria-hidden="true"></i>Save Changes</button>
+        <a href="student_dashboard.php" style="display: block; text-align: center; margin-top: 1rem; color: var(--text-muted); text-decoration: none;">Cancel</a>
     </form>
 </div>
 

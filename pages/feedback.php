@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_feedback"])) {
         ); ?></p>
         <a href="../<?php echo $submission[
             "file_path"
-        ]; ?>" target="_blank" class="btn btn-action" style="margin-top: 1rem; display: inline-block;">Download & Review PDF</a>
+        ]; ?>" target="_blank" class="btn btn-action" style="margin-top: 1rem; display: inline-block;"><i data-lucide="download" class="btn-icon" aria-hidden="true"></i>Download & Review PDF</a>
     </div>
 
     <div class="form-container" style="max-width: 100%; margin-top: 2rem;">
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_feedback"])) {
                 ] ?? ""; ?></textarea>
             </div>
 
-            <button type="submit" name="submit_feedback" class="btn btn-primary" style="width: 100%;">Save Review</button>
+            <button type="submit" name="submit_feedback" class="btn btn-primary" style="width: 100%;"><i data-lucide="save" class="btn-icon" aria-hidden="true"></i>Save Review</button>
         </form>
     </div>
 </div>

@@ -22,7 +22,7 @@ $approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'ap
 
 <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
     <h2>Welcome, <?php echo htmlspecialchars($_SESSION['full_name']); ?>!</h2>
-    <a href="upload.php" class="btn btn-primary">+ New Submission</a>
+    <a href="upload.php" class="btn btn-primary"><i data-lucide="upload-cloud" class="btn-icon" aria-hidden="true"></i>New Submission</a>
 </div>
 
 <div class="stats-grid">
@@ -57,7 +57,7 @@ $approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'ap
                     <tr>
                         <td>
                             <div style="font-weight: 700;"><?php echo htmlspecialchars($sub['title']); ?></div>
-                            <small style="color: #64748b;"><?php echo date('M d, Y', strtotime($sub['submitted_at'])); ?></small>
+                            <small style="color: var(--text-muted);"><?php echo date('M d, Y', strtotime($sub['submitted_at'])); ?></small>
                         </td>
                         <td>
                             <span class="badge badge-<?php echo $sub['status']; ?>">
@@ -67,10 +67,10 @@ $approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'ap
                         <td><strong style="color: var(--primary);"><?php echo $sub['grade'] ?: '--'; ?></strong></td>
                         <td>
                             <div style="display: flex; gap: 8px;">
-                                <a href="../<?php echo $sub['file_path']; ?>" target="_blank" class="btn btn-outline" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">View</a>
+                                <a href="../<?php echo $sub['file_path']; ?>" target="_blank" class="btn btn-outline" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;"><i data-lucide="eye" class="btn-icon" aria-hidden="true"></i>View</a>
                                 <?php if ($sub['status'] == 'pending'): ?>
-                                    <a href="edit_submission.php?id=<?php echo $sub['id']; ?>" class="btn btn-primary" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">Edit</a>
-                                    <a href="delete_submission.php?id=<?php echo $sub['id']; ?>" class="btn btn-accent" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;" onclick="return confirm('Delete this draft?')">Delete</a>
+                                    <a href="edit_submission.php?id=<?php echo $sub['id']; ?>" class="btn btn-primary" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;"><i data-lucide="pencil" class="btn-icon" aria-hidden="true"></i>Edit</a>
+                                    <a href="delete_submission.php?id=<?php echo $sub['id']; ?>" class="btn btn-accent" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;" onclick="return confirm('Delete this draft?')"><i data-lucide="trash-2" class="btn-icon" aria-hidden="true"></i>Delete</a>
                                 <?php endif; ?>
                             </div>
                             <?php if ($sub['comments']): ?>
@@ -82,7 +82,7 @@ $approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'ap
                     </tr>
                 <?php endforeach; ?>
                 <?php if (empty($submissions)): ?>
-                    <tr><td colspan="4" style="text-align:center; padding: 3rem; color: #64748b;">No submissions found. Start by uploading your thesis!</td></tr>
+                    <tr><td colspan="4" style="text-align:center; padding: 3rem; color: var(--text-muted);">No submissions found. Start by uploading your thesis!</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
