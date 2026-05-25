@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'supe
 }
 
 $is_admin = $_SESSION['role'] === 'admin';
-$dashboard_url = $is_admin ? 'admin_dashboard.php' : 'supervisor_dashboard.php';
+$dashboard_url = 'manage_users.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_user'])) {
     $full_name = $_POST['full_name'];
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_user'])) {
             </select>
         </div>
         <button type="submit" name="add_user" class="btn btn-primary" style="width: 100%;">Create User</button>
-        <a href="<?php echo $dashboard_url; ?>" style="display: block; text-align: center; margin-top: 1rem; color: #666; text-decoration: none;">Back to Dashboard</a>
+        <a href="<?php echo $dashboard_url; ?>" style="display: block; text-align: center; margin-top: 1rem; color: #666; text-decoration: none;">Back to Management</a>
     </form>
 </div>
 

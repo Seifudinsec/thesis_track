@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'supe
 }
 
 $is_admin = $_SESSION['role'] === 'admin';
-$dashboard_url = $is_admin ? 'admin_dashboard.php' : 'supervisor_dashboard.php';
+$dashboard_url = 'manage_users.php';
 $user_id = $_GET['id'] ?? null;
 
 if (!$user_id) {

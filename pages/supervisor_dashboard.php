@@ -17,7 +17,10 @@ $students = $pdo->query("SELECT * FROM users WHERE role = 'student' ORDER BY ful
         <h2>Supervisor Control Panel</h2>
         <p style="color: #64748b;">Reviewing student work and managing student accounts.</p>
     </div>
-    <a href="add_user.php" class="btn btn-primary">+ Add Student</a>
+    <div class="action-buttons">
+        <a href="add_user.php" class="btn btn-primary">+ Add Student</a>
+        <a href="manage_users.php" class="btn btn-outline">Manage Students</a>
+    </div>
 </div>
 
 <div class="stats-grid">
@@ -64,40 +67,6 @@ $students = $pdo->query("SELECT * FROM users WHERE role = 'student' ORDER BY ful
                 <?php endforeach; ?>
                 <?php if (empty($submissions)): ?>
                     <tr><td colspan="4" style="text-align:center; padding: 3rem; color: #64748b;">No submissions found.</td></tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="card" id="student-management">
-    <h3 style="margin-bottom: 1.5rem;">Student Management</h3>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Joined Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($students as $student): ?>
-                    <tr>
-                        <td data-label="Full Name" style="font-weight: 700;"><?php echo htmlspecialchars($student['full_name']); ?></td>
-                        <td data-label="Email"><?php echo htmlspecialchars($student['email']); ?></td>
-                        <td data-label="Joined Date"><?php echo date('M d, Y', strtotime($student['created_at'])); ?></td>
-                        <td data-label="Actions">
-                            <div class="action-buttons">
-                                <a href="edit_user.php?id=<?php echo $student['id']; ?>" class="btn btn-outline" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">Edit</a>
-                                <a href="delete_user.php?id=<?php echo $student['id']; ?>" class="btn btn-accent" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-                <?php if (empty($students)): ?>
-                    <tr><td colspan="4" style="text-align:center; padding: 3rem; color: #64748b;">No student accounts found.</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>

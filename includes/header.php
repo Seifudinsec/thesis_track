@@ -79,7 +79,7 @@ if (!function_exists('nav_class')) {
                                 <span class="nav-icon">A</span>
                                 <span>Add Student</span>
                             </a>
-                            <a class="nav-item <?php echo nav_class($current_page, ['edit_user.php', 'delete_user.php']); ?>" href="/thesis_track/pages/supervisor_dashboard.php#student-management">
+                            <a class="nav-item <?php echo nav_class($current_page, ['manage_users.php', 'edit_user.php', 'delete_user.php']); ?>" href="/thesis_track/pages/manage_users.php">
                                 <span class="nav-icon">M</span>
                                 <span>Manage Students</span>
                             </a>
@@ -95,7 +95,7 @@ if (!function_exists('nav_class')) {
                                 <span class="nav-icon">A</span>
                                 <span>Add User</span>
                             </a>
-                            <a class="nav-item <?php echo nav_class($current_page, ['edit_user.php', 'delete_user.php']); ?>" href="/thesis_track/pages/admin_dashboard.php#user-management">
+                            <a class="nav-item <?php echo nav_class($current_page, ['manage_users.php', 'edit_user.php', 'delete_user.php']); ?>" href="/thesis_track/pages/manage_users.php">
                                 <span class="nav-icon">M</span>
                                 <span>Manage Users</span>
                             </a>
