@@ -18,6 +18,9 @@ $stmt->execute([$student_id]);
 $submissions = $stmt->fetchAll();
 
 $approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'approved'));
+
+// Fetch upcoming deadlines
+$deadlines = $pdo->query("SELECT * FROM deadlines WHERE deadline_date >= NOW() ORDER BY deadline_date ASC LIMIT 3")->fetchAll();
 ?>
 
 <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
@@ -39,6 +42,29 @@ $approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'ap
         <div class="value"><?php echo count(array_filter($submissions, fn($s) => $s['status'] == 'rejected')); ?></div>
     </div>
 </div>
+
+<?php if (!empty($deadlines)): ?>
+<div class="card" style="margin-bottom: 2rem; border-left: 4px solid #f59e0b;">
+    <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px;">
+        <i data-lucide="bell" style="color: #f59e0b;"></i>
+        Upcoming Deadlines & Milestones
+    </h3>
+    <div class="metric-list">
+        <?php foreach ($deadlines as $d): ?>
+            <div style="padding: 1rem; background: #fff; border-radius: 8px; margin-bottom: 0.5rem; box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong style="display: block; font-size: 1.1rem; color: var(--primary);"><?php echo htmlspecialchars($d['title']); ?></strong>
+                    <small style="color: var(--text-muted);"><?php echo htmlspecialchars($d['description']); ?></small>
+                </div>
+                <div style="text-align: right;">
+                    <span style="display: block; font-weight: 700; color: #e65a5a;"><?php echo date('M d, Y', strtotime($d['deadline_date'])); ?></span>
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">Due at <?php echo date('H:i', strtotime($d['deadline_date'])); ?></small>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php endif; ?>
 
 <div class="card">
     <h3 style="margin-bottom: 1.5rem;">Your Academic Progress</h3>
@@ -74,7 +100,7 @@ $approved_count = count(array_filter($submissions, fn($s) => $s['status'] == 'ap
                                 <?php endif; ?>
                             </div>
                             <?php if ($sub['comments']): ?>
-                                <div class="feedback-content">
+                                <div class="feedback-content" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 4px; border-left: 3px solid var(--primary);">
                                     <small><strong>Supervisor says:</strong><br><?php echo nl2br(htmlspecialchars($sub['comments'])); ?></small>
                                 </div>
                             <?php endif; ?>

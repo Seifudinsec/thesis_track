@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 $u_count = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
 $s_count = $pdo->query("SELECT COUNT(*) FROM submissions")->fetchColumn();
 $p_count = $pdo->query("SELECT COUNT(*) FROM submissions WHERE status = 'pending'")->fetchColumn();
+$d_count = $pdo->query("SELECT COUNT(*) FROM deadlines WHERE deadline_date >= NOW()")->fetchColumn();
 
 $role_counts = $pdo->query("SELECT role, COUNT(*) AS total FROM users GROUP BY role")->fetchAll(PDO::FETCH_KEY_PAIR);
 $status_counts = $pdo->query("SELECT status, COUNT(*) AS total FROM submissions GROUP BY status")->fetchAll(PDO::FETCH_KEY_PAIR);
@@ -49,9 +50,9 @@ $rejected_count = $status_counts['rejected'] ?? 0;
         <h4>Total Submissions</h4>
         <div class="value"><?php echo $s_count; ?></div>
     </div>
-    <div class="stat-card" style="border-left-color: var(--highlight);">
-        <h4>Pending Reviews</h4>
-        <div class="value"><?php echo $p_count; ?></div>
+    <div class="stat-card" style="border-left-color: #f59e0b;">
+        <h4>Upcoming Deadlines</h4>
+        <div class="value"><?php echo $d_count; ?></div>
     </div>
 </div>
 

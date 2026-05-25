@@ -106,6 +106,10 @@ if (!function_exists('nav_class')) {
                                 <i data-lucide="layout-dashboard" class="nav-icon" aria-hidden="true"></i>
                                 <span>Dashboard</span>
                             </a>
+                            <a class="nav-item <?php echo nav_class($current_page, ['manage_deadlines.php', 'add_deadline.php']); ?>" href="<?php echo $base_path; ?>pages/manage_deadlines.php">
+                                <i data-lucide="calendar-days" class="nav-icon" aria-hidden="true"></i>
+                                <span>Manage Deadlines</span>
+                            </a>
                             <a class="nav-item <?php echo nav_class($current_page, 'add_user.php'); ?>" href="<?php echo $base_path; ?>pages/add_user.php">
                                 <i data-lucide="user-plus" class="nav-icon" aria-hidden="true"></i>
                                 <span>Add User</span>
