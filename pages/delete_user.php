@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/db.php';
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Session is already started in config/db.php
 
 if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'supervisor'], true)) {
     header("Location: ../index.php");

@@ -1,6 +1,6 @@
 <?php
-require_once "../config/db.php";
-require_once "../includes/header.php";
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/header.php';
 
 // Access Control
 if (!isset($_SESSION["user_id"]) || $_SESSION["role"] !== "supervisor") {
@@ -130,4 +130,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_feedback"])) {
         </form>
     </div>
 </div>
-<?php require_once "../includes/footer.php"; ?>
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>

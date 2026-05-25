@@ -1,10 +1,7 @@
 <?php
 require_once 'config/db.php';
 
-// Start session if not started
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Session is already started in config/db.php
 
 if (isset($_SESSION['user_id']) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
     if ($_SESSION['role'] == 'student') {

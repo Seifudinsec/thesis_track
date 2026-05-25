@@ -94,16 +94,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
     </form>
 </div>
 
-<!-- <section class="student-explanation" style="margin-top: 3rem; background: #eee; padding: 1.5rem; border-radius: 8px;"> -->
-    <!-- <h3>🎓 Student Explanation: edit_submission.php</h3> -->
-    <!-- <p><strong>CRUD Operation:</strong> This is the <strong>Update (U)</strong> phase. We are modifying an existing record.</p> -->
-    <!-- <p><strong>Logic Flow:</strong> -->
-        <!-- <ul> -->
-            <!-- <li>We check if a new file is uploaded. If yes, we upload it and delete the old one using <code>unlink()</code> to save server space.</li> -->
-            <!-- <li>If no file is uploaded, we only update the title in the database.</li> -->
-        <!-- </ul> -->
-    <!-- </p> -->
-    <!-- <p><strong>Security:</strong> Notice the <code>WHERE id = ? AND student_id = ?</code>. This prevents one student from "guessing" another student's ID and editing their work (IDOR prevention).</p> -->
-<!-- </section> -->
-
-<?php require_once __DIR__ . '/../includes/footer.php'; ?>
+<?php require_once __DIR__ . "/../includes/footer.php"; ?>

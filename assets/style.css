@@ -613,7 +613,7 @@ td {
     border-radius: 8px;
     background:
         linear-gradient(145deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.35) 55%, rgba(74,112,169,0.35) 100%),
-        url('/thesis_track/assets/thesis%20background.jpeg') center / cover no-repeat;
+        url('thesis%20background.jpeg') center / cover no-repeat;
     box-shadow: var(--shadow-lg);
     overflow: hidden;
 }
